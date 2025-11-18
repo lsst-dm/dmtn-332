@@ -25,8 +25,6 @@ For example, ``2025042900332`` is the integer ID of a single-snap ``exposure``/`
 In the rare case where we observed multiple ``exposures`` with the intent that we would treat them as a single ``visit``, but later decided to reinterpret each ``exposure`` as its own ``visit``, the ``visit`` that holds the first ``exposure`` in the sequence *only* has its ID prefixed with a ``9``.
 In all other cases the ``visit`` ID is the ID of the first ``exposure`` in the ``visit``.
 
-Observations taken with the non-default Camera Control System (CCS; engineering data only) or variuos low-level simulators are identified by artificially incrementing the millenium in the ``day_obs`` (i.e. ``day_obs=30240101`` is the CCS ``day_obs`` value for observations taken the night of January 1, 2024).
-
 This scheme applies to LSSTCam, LSSTComCam (the single-raft commissioning camera that was on the sky in fall of 2024), and LATISS (the Rubin Observatory auxillary telescope instrument).
 
 .. _packed-detector-observation-ids:
@@ -42,9 +40,7 @@ A packed detector-observation identifier is computed by the following pseudocode
       detector + n_detectors * (
          seq_num + n_seq_nums * (
                convert_day_obs_to_ordinal(day_obs, day_obs_begin)
-               + n_days * (
-                  controller_id
-                  n_controllers * is_one_to_one_reinterpretation
+               + n_days * is_one_to_one_reinterpretation
                )
          )
       )
@@ -66,11 +62,6 @@ with the following definitions:
    The first ``day_obs`` for which this packing scheme is valid (``2010-01-01``).
 ``n_days``
    The number of ordinal days over which this packaging schema is valid (16384; about 45 years, or 2055 for this ``day_obs_begin``).
-``controller_id``
-   Unused, but potentially an integer corresponding to the controller used (``0`` for the default Observatory Control System (OCS) used for all science data; ``1`` for the ``CCS``).
-``n_controllers``
-   The number of controller to allocate space for.
-   Set to ``1`` to assume all Tata is from the OCS.
 ``is_one_to_one_reintepretation``
    ``1`` if this is a ``visit`` defined by reinterpreting the first ``exposure`` in a multi-snap sequence of observations as a single, one-to-one ``visit``, ``0`` otherwise (i.e. the representation of the rate leading ``9`` in :ref:`observation-ids`).
 
