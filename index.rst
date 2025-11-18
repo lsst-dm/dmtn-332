@@ -67,7 +67,7 @@ with the following definitions:
 ``n_days``
    The number of ordinal days over which this packaging schema is valid (16384; about 45 years).
 ``controller_id``
-   Unused, but potentially an integer corresponding to the controller used (``0`` for the default Observatory Control System (OCS) used for all science data; ``1`` for the `CCS``).
+   Unused, but potentially an integer corresponding to the controller used (``0`` for the default Observatory Control System (OCS) used for all science data; ``1`` for the ``CCS``).
 ``n_controllers``
    The number of controller to allocate space for.
    Set to ``1`` to assume all Tata is from the OCS.
@@ -91,7 +91,7 @@ A single integer ID for a ``{tract, patch}`` combination is computed by the foll
 
    packed = patch_id * (n_patches * tract_id)
 
-For the ``lsst_cells_v1`` skymap used in DP1, ``n_patches = 10×10 = 100``.
+For the ``lsst_cells_v1`` skymap used in DP1 {cite:p}`RTN-095`, ``n_patches = 10×10 = 100``.
 Note that while there is typically one coadd for each band, we do not typically need an integer ID that packs the band in as well.
 
 .. _source-and-object-ids:
@@ -113,7 +113,7 @@ With the following definitions:
    For Source IDs, this is ``524288`` (just over one Source every 6×6 pixels).
    For Object IDs using the ``lsst_cells_v1`` skymap, this is ``68719476736`` (very conservative; this is approximately 6000 Objects *per pixel*).
 ``image_id``
-   The per-detector (for Sources) or per-patch (for Objets) image ID.
+   The per-detector (for Sources) or per-patch (for Objects) image ID.
 ``n_images``
    The maximum value for ``image_id``, rounded up to the nearest power of two.
    For Sources this is ``274877906944``.
@@ -121,7 +121,7 @@ With the following definitions:
 ``release_id``
    An integer ID that identifies the data release.
    Development versions of the pipelines use ``release_id=0``.
-   The ``release_id`` for DP1 is ``4``.
+   The ``release_id`` for DP1 is ``4`` with the first three being reserved for alert production.
    This will also be the value used by non-official processing with the ``LSSTComCam`` DRP pipeline on the ``v29`` release branch, in order to make it possible to exactly reproduce the official processing.
    Space is reserved in this scheme for 64 distinct releases.
 
