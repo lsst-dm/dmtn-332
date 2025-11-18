@@ -91,7 +91,7 @@ A single integer ID for a ``{tract, patch}`` combination is computed by the foll
 
    packed = patch_id * (n_patches * tract_id)
 
-For the ``lsst_cells_v1`` skymap used in DP1 {cite:p}`RTN-095`, ``n_patches = 10×10 = 100``.
+For the ``lsst_cells_v1`` skymap used in DP1 :cite:`RTN-095`, ``n_patches = 10×10 = 100``.
 Note that while there is typically one coadd for each band, we do not typically need an integer ID that packs the band in as well.
 
 .. _source-and-object-ids:
@@ -126,3 +126,8 @@ With the following definitions:
    Space is reserved in this scheme for 64 distinct releases.
 
 This logic is implemented by the :py:class:`lsst.meas.base.IdGenerator` class.
+
+References
+==========
+
+.. bibliography::
