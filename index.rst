@@ -65,7 +65,7 @@ with the following definitions:
 ``day_obs_begin``
    The first ``day_obs`` for which this packing scheme is valid (``2010-01-01``).
 ``n_days``
-   The number of ordinal days over which this packaging schema is valid (16384; about 45 years).
+   The number of ordinal days over which this packaging schema is valid (16384; about 45 years, or 2055 for this ``day_obs_begin``).
 ``controller_id``
    Unused, but potentially an integer corresponding to the controller used (``0`` for the default Observatory Control System (OCS) used for all science data; ``1`` for the ``CCS``).
 ``n_controllers``
